@@ -7,7 +7,8 @@ Scope {
     Variants {
         model: Quickshell.screens
 
-        PanelWindow {
+		PanelWindow {
+		    id: panelWin
             required property var modelData
             screen: modelData
 

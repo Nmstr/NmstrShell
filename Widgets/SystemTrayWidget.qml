@@ -26,11 +26,16 @@ Rectangle {
                 IconImage {
                     source: item.modelData.icon
                     implicitSize: 20
-                }
+				}
 
-                MouseArea {
+				MouseArea {
                     anchors.fill: parent
-                    acceptedButtons: Qt.AllButtons
+					acceptedButtons: Qt.AllButtons
+
+					QsMenuOpener {
+						id: menuOpener
+						menu: item.modelData.menu
+					}
 
                     onClicked: event => {
                         if (event.button === Qt.LeftButton) {
@@ -38,7 +43,7 @@ Rectangle {
                         } else if (event.button === Qt.MiddleButton) {
                             item.modelData.secondaryActivate();
                         } else if (event.button === Qt.RightButton && item.modelData.hasMenu) {
-                            item.modelData.display(itemMenu, 0, 0);
+						    item.modelData.display(panelWin, mouseX, mouseY);
                         }
                     }
                 }
